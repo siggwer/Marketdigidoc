@@ -1,4 +1,6 @@
-
+###> environnement/snowtricks ###
+.idea
+composer.phar
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
@@ -13,4 +15,5 @@
 .phpunit
 .phpunit.result.cache
 /phpunit.xml
+/build/
 ###< symfony/phpunit-bridge ###
