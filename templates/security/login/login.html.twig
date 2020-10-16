@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+{% block title %}Connexion{% endblock %}
+{% block body %}
+<div class="gtco-section">
+	<div class="gtco-container">
+		<div class="row">
+			    <div class="col-md-8 animate-box">
+				<h3>Connexion</h3>
+                     {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+				    <form action="#" method="post">
+					    <div class="row form-group">
+						    <div class="col-md-12">
+							    <label for="email">Email</label>
+							    <input type="text" id="email" class="form-control" placeholder="Votre email" required/>
+						    </div>
+					    </div>
+
+					    <div class="row form-group">
+						    <div class="col-md-12">
+							    <label for="password">Votre mot de passe</label>
+							    <input type="password" id="password" class="form-control" placeholder="Votre mot de passe" required/>
+						    </div>
+					    </div>
+
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+
+					    <div class="form-group">
+						    <input type="submit" class="btn btn-primary" value="Connexion"/>
+                            <a href="{{path('home')}}" class="btn btn-info pull-right">Accueil</a>
+					    </div>
+				    </form>
+		    </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
