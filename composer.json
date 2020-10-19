@@ -12,6 +12,7 @@
         "doctrine/orm": "^2.7",
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^5.1",
+        "stof/doctrine-extensions-bundle": "^1.5",
         "symfony/asset": "4.4.*",
         "symfony/console": "4.4.*",
         "symfony/dotenv": "4.4.*",
@@ -37,6 +38,8 @@
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
+        "dama/doctrine-test-bundle": "^6.3",
+        "hautelook/alice-bundle": "^2.8",
         "symfony/browser-kit": "^4.4",
         "symfony/css-selector": "^4.4",
         "symfony/debug-bundle": "^4.4",
@@ -71,6 +74,24 @@
         "symfony/polyfill-php56": "*"
     },
     "scripts": {
+        "prepare-test": [
+            "php ./bin/console d:d:d --force --if-exists --env=test",
+            "php ./bin/console d:d:c --env=test",
+            "php ./bin/console d:s:u -f --env=test",
+            "php ./bin/console h:f:l -n --env=test"
+        ],
+        "prepare-prod": [
+            "php ./bin/console d:d:d --force --if-exists",
+            "php ./bin/console d:d:c --env=prod",
+            "php ./bin/console d:s:u -f --env=prod",
+            "php ./bin/console h:f:l -n --env=prod"
+        ],
+        "prepare": [
+            "php ./bin/console d:d:d --force --if-exists",
+            "php ./bin/console d:d:c",
+            "php ./bin/console d:s:u -f",
+            "php ./bin/console h:f:l -n"
+        ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
@@ -87,7 +108,7 @@
     },
     "extra": {
         "symfony": {
-            "allow-contrib": false,
+            "allow-contrib": true,
             "require": "4.4.*"
         }
     }

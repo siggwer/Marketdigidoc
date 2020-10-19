@@ -8,6 +8,7 @@
 					<ul>
 						<li class="active"><a href="index.html">Accueil</a></li>
 						<!--<li><a href="about.html">About</a></li>-->
+						{% if is_granted("ROLE_USER")%}
 						<li class="has-dropdown">
 							<a href="services.html">Services</a>
 							<ul class="dropdown">
@@ -26,12 +27,14 @@
 								<li><a href="#">jQuery</a></li>
 							</ul>
 						</li>
-						<li><a href="contact.html">Contact</a></li>
+						{# <li><a href="contact.html">Contact</a></li> #}
 					</ul>
 				</div>
 				<div class="col-xs-2 text-right hidden-xs menu-2">
 					<ul>
-						<li class="btn-cta"><a href="/login"><span>Login</span></a></li>
+					    {% else %}
+						<li class="btn-cta"><a href="/login"><span>Connexion</span></a></li>
+						{% endif %}
 					</ul>
 				</div>
 			</div>

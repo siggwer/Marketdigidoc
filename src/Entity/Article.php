@@ -1,0 +1,373 @@
+<?php
+
+namespace App\Entity;
+
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use App\Services\VideoEmbedTrait;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\ORM\Mapping as ORM;
+use DateTimeImmutable;
+use DateTimeInterface;
+use Exception;
+
+/**
+* Class Article. 
+
+* @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
+* @ORM\EntityListeners({"App\EntityListener\ArticleListener"})
+*/
+class Article
+{
+    use VideoEmbedTrait;
+    
+    /**
+     * @var int|null
+     *
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @var string|null
+     *
+     * @Assert\NotBlank
+     *
+     * @ORM\Column(type="string")
+     */
+    private $name;
+
+    /**
+     * @var DateTimeInterface|null
+     *
+     * @ORM\Column(type="datetime_immutable")
+     */
+    private $publishedAt;
+
+    /**
+     * @var DateTimeInterface|null
+     *
+     * @ORM\Column(type="datetime_immutable")
+     */
+    private $updatedAt;
+
+    /**
+     * @var User|null
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $author;
+
+    /**
+     * @var string|null
+     *
+     * @Assert\NotBlank
+     *
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
+    /**
+     * @var Category|null
+     *
+     * @Assert\NotNull
+     *
+     * @ORM\ManyToOne(targetEntity="Category")
+     */
+    private $category;
+
+    /**
+     * @var Collection|Comment[]
+     *
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="Article")
+     */
+    private $comments;
+
+    /**
+     * @var Picture|null
+     *
+     * @Assert\Valid
+     * @Assert\NotNull
+     *
+     * @ORM\OneToOne(targetEntity="Picture", cascade={"persist"})
+     */
+    private $pictureOnFront;
+
+    /**
+     * @var Collection|Picture[]
+     *
+     * @Assert\Valid
+     *
+     * @ORM\OneToMany(targetEntity="Picture", mappedBy="article", cascade={"persist"}, orphanRemoval=false)
+     */
+    private $pictures;
+
+    /**
+     * @var Collection|Video[]
+     *
+     * @Assert\Valid
+     *
+     * @ORM\OneToMany(targetEntity="Video", mappedBy="article", cascade={"persist"}, orphanRemoval=true)
+     */
+    private $videos;
+
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     *
+     * @Gedmo\Slug(fields={"name"})
+     */
+    private $slug;
+
+    /**
+     * Article constructor.
+     *
+     * @throws Exception
+     */
+    public function __construct()
+    {
+        $this->publishedAt = new DateTimeImmutable();
+        $this->updatedAt = new DateTimeImmutable();
+        $this->comments = new ArrayCollection();
+        $this->pictures = new ArrayCollection();
+        $this->videos = new ArrayCollection();
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return DateTimeInterface|null
+     */
+    public function getPublishedAt(): ?DateTimeInterface
+    {
+        return $this->publishedAt;
+    }
+
+    /**
+     * @return DateTimeInterface|null
+     */
+    public function getUpdatedAt(): ?DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @return User|null
+     */
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @return Comment[]|Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @return Category|null
+     */
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    /**
+     * @return Picture|null
+     */
+    public function getPictureOnFront(): ?Picture
+    {
+        return $this->pictureOnFront;
+    }
+
+    /**
+     * @return Picture[]|Collection
+     */
+    public function getPictures()
+    {
+        return $this->pictures;
+    }
+
+    /**
+     * @return Video[]|Collection
+     */
+    public function getVideos(): Collection
+    {
+        return $this->videos;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string|null $name
+     */
+    public function setName(?string $name): void
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @param DateTimeInterface|null $publishedAt
+     */
+    public function setPublishedAt(?DateTimeInterface $publishedAt): void
+    {
+        $this->publishedAt = $publishedAt;
+    }
+
+    /**
+     * @param DateTimeInterface|null $updatedAt
+     */
+    public function setUpdatedAt(?DateTimeInterface $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * @param User|null $author
+     */
+    public function setAuthor(?User $author): void
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * @param string|null $description
+     */
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @param Category|null $category
+     */
+    public function setCategory(?Category $category): void
+    {
+        $this->category = $category;
+    }
+
+    /**
+     * @param Comment[]|Collection $comments
+     */
+    public function setComments($comments): void
+    {
+        $this->comments = $comments;
+    }
+
+    /**
+     * @param Picture|null $pictureOnFront
+     */
+    public function setPictureOnFront(?Picture $pictureOnFront): void
+    {
+        $this->pictureOnFront = $pictureOnFront;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @param Picture $picture
+     *
+     * @return Article
+     */
+    public function addPicture(Picture $picture): self
+    {
+        if (!$this->pictures->contains($picture)) {
+            $this->pictures[] = $picture;
+            $picture->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Picture $picture
+     *
+     * @return Article
+     */
+    public function removePicture(Picture $picture): self
+    {
+        if ($this->pictures->contains($picture)) {
+            $this->pictures->removeElement($picture);
+            if ($picture->getArticle() === $this) {
+                $picture->setArticle(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Video $video
+     *
+     * @return $this
+     */
+    public function addVideo(Video $video): self
+    {
+        if (!$this->videos->contains($video)) {
+            $url = $this->converter($video);
+            $video->setUrl($url);
+            $this->videos[] = $video;
+            $video->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Video $video
+     *
+     * @return Article
+     */
+    public function removeVideo(Video $video): self
+    {
+        if ($this->videos->contains($video)) {
+            $this->videos->removeElement($video);
+            if ($video->getArticle() === $this) {
+                $video->setArticle(null);
+            }
+        }
+
+        return $this;
+    }
+}

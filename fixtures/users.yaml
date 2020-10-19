@@ -1,0 +1,8 @@
+App\Entity\User:
+  user_{1..10}:
+    username: 'username-<current()>'
+    email: 'email+<current()>\@email.com'
+    plainPassword: 'password'
+    avatar: '@avatar_<current()>'
+    passwordToken: 'token-<current()>'
+    token: 'token-<current()>'
