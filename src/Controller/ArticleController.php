@@ -36,16 +36,16 @@ class ArticleController extends AbstractController
         Request $request
     ): Response {
         return $this->render(
-            'article/list.html.twig'
-            // 'article/list.html.twig',
-            // [
-            // 'articles' => $articleRepository->findBy(
-            //     [],
-            //     ['publishedAt' => 'desc'],
-            //     6,
-            //     ($request->query->get('page', 2) - 1) * 6
-            // ),
-            // ]
+            //'article/list.html.twig'
+            'article/list.html.twig',
+             [
+            'articles' => $articleRepository->findBy(
+                 [],
+                 ['publishedAt' => 'desc'],
+                 6,
+                 ($request->query->get('page', 2) - 1) * 6
+             ),
+             ]
         );
     }
 }

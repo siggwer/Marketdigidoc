@@ -62,6 +62,15 @@ class Article
     private $author;
 
     /**
+    * @var string|null
+    *
+    * @Assert\NotBlank
+    *
+    * @ORM\Column(type="text")
+    */
+    private $abstract;
+
+    /**
      * @var string|null
      *
      * @Assert\NotBlank
@@ -178,6 +187,14 @@ class Article
     /**
      * @return string|null
      */
+    public function getAbstract(): ?string
+    {
+        return $this->abstract;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getDescription(): ?string
     {
         return $this->description;
@@ -261,6 +278,14 @@ class Article
     public function setAuthor(?User $author): void
     {
         $this->author = $author;
+    }
+
+      /**
+     * @param string|null $abstract
+     */
+    public function setAbstract(?string $abstract): void
+    {
+        $this->abstract = $abstract;
     }
 
     /**
