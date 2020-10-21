@@ -15,6 +15,7 @@ use Exception;
  * Class User.
  *
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\EntityListeners({"App\EntityListener\UserListener"})
  *
  * @UniqueEntity("email")
  * @UniqueEntity("username")
