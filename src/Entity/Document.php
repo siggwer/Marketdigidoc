@@ -13,12 +13,12 @@ use DateTimeInterface;
 use Exception;
 
 /**
-* Class Article. 
+* Class Document. 
 
-* @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
-* @ORM\EntityListeners({"App\EntityListener\ArticleListener"})
+* @ORM\Entity(repositoryClass="App\Repository\DocumentRepository")
+* @ORM\EntityListeners({"App\EntityListener\DocumentListener"})
 */
-class Article
+class Document
 {
     use VideoEmbedTrait;
     
@@ -91,7 +91,7 @@ class Article
     /**
      * @var Collection|Comment[]
      *
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="Article")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="document")
      */
     private $comments;
 
@@ -110,7 +110,7 @@ class Article
      *
      * @Assert\Valid
      *
-     * @ORM\OneToMany(targetEntity="Picture", mappedBy="article", cascade={"persist"}, orphanRemoval=false)
+     * @ORM\OneToMany(targetEntity="Picture", mappedBy="document", cascade={"persist"}, orphanRemoval=false)
      */
     private $pictures;
 
@@ -119,7 +119,7 @@ class Article
      *
      * @Assert\Valid
      *
-     * @ORM\OneToMany(targetEntity="Video", mappedBy="article", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Video", mappedBy="document", cascade={"persist"}, orphanRemoval=true)
      */
     private $videos;
 
@@ -131,7 +131,7 @@ class Article
     private $slug;
 
     /**
-     * Article constructor.
+     * document constructor.
      *
      * @throws Exception
      */
@@ -333,13 +333,13 @@ class Article
     /**
      * @param Picture $picture
      *
-     * @return Article
+     * @return Document
      */
     public function addPicture(Picture $picture): self
     {
         if (!$this->pictures->contains($picture)) {
             $this->pictures[] = $picture;
-            $picture->setArticle($this);
+            $picture->setDocument($this);
         }
 
         return $this;
@@ -348,14 +348,14 @@ class Article
     /**
      * @param Picture $picture
      *
-     * @return Article
+     * @return Document
      */
     public function removePicture(Picture $picture): self
     {
         if ($this->pictures->contains($picture)) {
             $this->pictures->removeElement($picture);
-            if ($picture->getArticle() === $this) {
-                $picture->setArticle(null);
+            if ($picture->getDocument() === $this) {
+                $picture->setDocument(null);
             }
         }
 
@@ -373,7 +373,7 @@ class Article
             $url = $this->converter($video);
             $video->setUrl($url);
             $this->videos[] = $video;
-            $video->setArticle($this);
+            $video->setDocument($this);
         }
 
         return $this;
@@ -382,14 +382,14 @@ class Article
     /**
      * @param Video $video
      *
-     * @return Article
+     * @return Document
      */
     public function removeVideo(Video $video): self
     {
         if ($this->videos->contains($video)) {
             $this->videos->removeElement($video);
-            if ($video->getArticle() === $this) {
-                $video->setArticle(null);
+            if ($video->getDocument() === $this) {
+                $video->setDocument(null);
             }
         }
 

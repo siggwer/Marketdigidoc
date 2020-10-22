@@ -24,12 +24,12 @@ class Picture
     private $id;
 
     /**
-     * @var article|null
+     * @var Document|null
      *
-     * @ORM\ManyToOne(targetEntity="Article", inversedBy="pictures")
+     * @ORM\ManyToOne(targetEntity="Document", inversedBy="pictures")
      * @ORM\JoinColumn(name="picture_id", referencedColumnName="id", onDelete="CASCADE") //ajout JoinColumn pour la supression
      */
-    private $article;
+    private $document;
 
     /**
      * @var string|null
@@ -65,19 +65,19 @@ class Picture
     }
 
     /**
-     * @return article|null
+     * @return Document|null
      */
-    public function getArticle(): ?article
+    public function getDocument(): ?document
     {
-        return $this->article;
+        return $this->document;
     }
 
     /**
-     * @param article|null $article
+     * @param Document|null $document
      */
-    public function setArticle(?article $article): void
+    public function setDocument(?Document $document): void
     {
-        $this->article = $article;
+        $this->document = $document;
     }
 
     /**

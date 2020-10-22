@@ -3,12 +3,12 @@
 namespace App\EntityListener;
 
 use Symfony\Component\Security\Core\Security;
-use App\Entity\Article;
+use App\Entity\Document;
 
 /**
- * Class ArticleListener.
+ * Class DocumentListener.
  */
-class ArticleListener
+class DocumentListener
 {
     /**
      * @var Security
@@ -16,7 +16,7 @@ class ArticleListener
     private $security;
 
     /**
-     * ArticleListener constructor.
+     * DocumentListener constructor.
      *
      * @param Security $security
      */
@@ -26,13 +26,13 @@ class ArticleListener
     }
 
     /**
-     * @param Article $article
+     * @param Document $document
      */
-    public function prePersist(Article $article)
+    public function prePersist(Document $document)
     {
         if (!($this->security->getUser() instanceof User)) {
             return;
         }
-        $article->setAuthor($this->security->getUser());
+        $document->setAuthor($this->security->getUser());
     }
 }

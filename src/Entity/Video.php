@@ -22,12 +22,12 @@ class Video
     private $id;
 
     /**
-     * @var Article|null
+     * @var Document|null
      *
-     * @ORM\ManyToOne(targetEntity="Article", inversedBy="videos")
+     * @ORM\ManyToOne(targetEntity="Document", inversedBy="videos")
      * @ORM\JoinColumn(name="video_id", referencedColumnName="id", onDelete="CASCADE") //ajout JoinColumn pour la suppression
      */
-    private $article;
+    private $document;
 
     /**
      * @var string|null
@@ -48,19 +48,19 @@ class Video
     }
 
     /**
-     * @return Article|null
+     * @return Document|null
      */
-    public function getArticle(): ?Article
+    public function getdocument(): ?document
     {
-        return $this->article;
+        return $this->document;
     }
 
     /**
-     * @param Article|null $article
+     * @param Document|null $document
      */
-    public function setArticle(?Article $article): void
+    public function setdocument(?document $document): void
     {
-        $this->article = $article;
+        $this->document = $document;
     }
 
     /**

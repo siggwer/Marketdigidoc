@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="gtco-loader"></div>
+	
+<div id="page">
+
+	<!-- NAVIGATION -->
+	{% include "nav/nav.html.twig" %}
+
+	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:url(/images/img_bg_3.jpg);">
+
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>Détails</h1>
+							<h2>
+							<a href="#" target="_blank"></a></h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+<div id="gtco-features-2">
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+					<h2>{{ document.name }}</h2>
+					<p>{{ document.abstract }}</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="feature-left animate-box" data-animate-effect="fadeInLeft">
+						<span class="icon">
+							<i class="icon-check"></i>
+						</span>
+						<div class="feature-copy">
+							{# <h3>Retina Ready</h3> #}
+							<p>{{ document.description }}</p>
+                            <p>Publié le
+                                {{ document.publishedAt|date("d/m/Y") }}
+                               par
+                                {{ document.author.username }}
+                            </p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+                    <div class="gtco-video gtco-bg" style="background-image: url(../images/img_1.jpg); ">
+                        {% if document.pictureOnFront is not null %}
+                            <img class="card-img-top" src="{{ asset(document.pictureOnFront.path) }}" alt="{{ document.pictureOnFront.alt }}">
+                        {% else %}
+                            <img class="card-img-top" src="{{ asset('images/img_1.jpg') }}" alt="Pas d'image disponible">
+                        {% endif %}
+                    </div>
+				</div>
+                <div class="col-md-6">
+					<div class="gtco-video gtco-bg" style="background-image: url(images/img_1.jpg); ">
+						<a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo"><i class="icon-video2"></i></a>
+						<div class="overlay"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -2,23 +2,23 @@
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-xs-2">
-					<div id="gtco-logo"><a href="index.html">Marketdigidoc.</a></div>
+					<div id="gtco-logo"><a href="{{ path('home') }}">Marketdigidoc.</a></div>
 				</div>
 				<div class="col-xs-8 text-center menu-1">
 					<ul>
-						<li class="active"><a href="index.html">Accueil</a></li>
+						<li class="active"><a href="{{ path('home') }}">Accueil</a></li>
 						<!--<li><a href="about.html">About</a></li>-->
 						{% if is_granted("ROLE_USER")%}
 						<li class="has-dropdown">
-							<a href="services.html">Services</a>
+							<a href="services.html">Marketing</a>
 							<ul class="dropdown">
-								<li><a href="#">Web Design</a></li>
+								<li><a href="#">Marketing général</a></li>
 								<li><a href="#">eCommerce</a></li>
 								<li><a href="#">Branding</a></li>
-								<li><a href="#">API</a></li>
+								<li><a href="#">Référencement</a></li>
 							</ul>
 						</li>
-						<li class="has-dropdown">
+						{# <li class="has-dropdown">
 							<a href="#">Tools</a>
 							<ul class="dropdown">
 								<li><a href="#">HTML5</a></li>
@@ -26,14 +26,15 @@
 								<li><a href="#">Sass</a></li>
 								<li><a href="#">jQuery</a></li>
 							</ul>
-						</li>
+						</li> #}
 						{# <li><a href="contact.html">Contact</a></li> #}
 					</ul>
 				</div>
 				<div class="col-xs-2 text-right hidden-xs menu-2">
 					<ul>
+						<li class="btn-cta"><a href="{{ path('security_logout') }}"><span>Deconnexion</span></a></li>
 					    {% else %}
-						<li class="btn-cta"><a href="/login"><span>Connexion</span></a></li>
+						<li class="btn-cta"><a href="{{ path('security_login') }}"><span>Connexion</span></a></li>
 						{% endif %}
 					</ul>
 				</div>

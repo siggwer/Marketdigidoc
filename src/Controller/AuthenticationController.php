@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class AuthenticationController extends AbstractController
 {
-    
     /**
      * @Route("/login", name="security_login")
      *
@@ -31,6 +30,11 @@ class AuthenticationController extends AbstractController
         return $this->render('security/login/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
+     /**
+     * @Route("/logout", name="security_logout")
+     *
+     * @codeCoverageIgnore
+     */
     public function logout()
     {
     }

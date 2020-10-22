@@ -2,7 +2,7 @@ App\Entity\Picture:
   picture_{1..500}:
     alt: 'Texte alternatif'
     path: 'uploads/image.png'
-    article: '@article_<($current % 100 + 1)>'
+    document: '@document_<($current % 100 + 1)>'
   picture_on_front_{1..100}:
     alt: 'Texte alternatif'
     path: 'uploads/image.png'

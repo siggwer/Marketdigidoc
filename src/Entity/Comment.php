@@ -49,7 +49,7 @@ class Comment
     /**
      * @var Trick|null
      *
-     * @ORM\ManyToOne(targetEntity="Article", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="Document", inversedBy="comments")
      * @ORM\JoinColumn(name="comment_id", referencedColumnName="id", onDelete="CASCADE") //ajout JoinColumn pour la suppression
      */
     private $trick;
@@ -121,18 +121,18 @@ class Comment
     }
 
     /**
-     * @return Article|null
+     * @return Document|null
      */
-    public function getArticle(): ?Article
+    public function getDocument(): ?Document
     {
-        return $this->article;
+        return $this->document;
     }
 
     /**
-     * @param Article|null $article
+     * @param Document|null $document
      */
-    public function setArticle(?Article $article): void
+    public function setDocument(?Document $document): void
     {
-        $this->article = $article;
+        $this->document = $document;
     }
 }

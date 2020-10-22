@@ -2,5 +2,5 @@ App\Entity\Comment:
   comment_{1..2000}:
     content: '<paragraph(2, true)>'
     author: '@user_<numberBetween(1, 10)>'
-    article: '@article_<($current % 100 + 1)>'
+    document: '@document_<($current % 100 + 1)>'
     

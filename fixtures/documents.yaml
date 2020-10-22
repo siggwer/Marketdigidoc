@@ -1,9 +1,9 @@
 
-App\Entity\Article:
-  article_{1..100}:
-    name: 'Article <current()>'
-#    slug: 'Article-<current()>'
-    category: '@category_<($current % 10 + 1)>'
+App\Entity\Document:
+  document_{1..100}:
+    name: 'document <current()>'
+    slug: 'document-<current()>'
+    category: '@category_<($current % 4 + 1)>'
     author: '@user_<($current % 10 + 1)>'
     abstract: '<sentence(6)>'
     description: '<paragraph(4, true)>'

@@ -2,4 +2,4 @@
 App\Entity\Video:
   video_{1..500}:
     url: 'https://www.youtube.com/embed/oI-umOzNBME'
-    article: '@article_<($current % 100 + 1)>'
+    document: '@document_<($current % 100 + 1)>'
