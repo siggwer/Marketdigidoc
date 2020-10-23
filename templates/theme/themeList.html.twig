@@ -16,7 +16,7 @@
 				<div class="col-md-8 col-md-offset-2 text-center">
 					<div class="display-t">
 						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1>Thème marketing</h1>
+							<h1>Thèmes</h1>
 							<h2>
 							<a href="#" target="_blank"></a></h2>
 						</div>
@@ -29,24 +29,22 @@
 	<div id="gtco-features">
 		<div class="gtco-container">
 			<div class="row">
-			{% for document in documents %}
+			{% for theme in themes %}
 				<div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
 					<div class="feature-center">
 						<span class="icon">
-						{% if document.category.id == 1 %}
+						{% if theme.category.id == 1 %}
 							<i class="icon-eye"></i>
-						{% else %}
+						{% elseif theme.category.id == 2 %}
 							<i class="icon-command"></i>
+                        {% elseif theme.category.id == 3 %}
+							<i class="icon-pencil"></i>
+                        {% elseif theme.category.id == 4 %}
+							<i class="icon-laptop"></i>        
 						{% endif %}		
 						</span>
-						<h3>{{ document.name }}</h3>
-						<p> {{ document.abstract }}</p>
-						 <p>Posté le
-                    		{{ document.publishedAt|date("d/m/Y") }}
-                    		par
-                    		{{ document.author.username }}
-                		</p>
-						<p><a href="{{ path("document_show", { 'slug': document.slug}) }}" class="btn btn-primary">En savoir plus</a></p>
+						<h3>{{ theme.category.name }}</h3>
+						<p><a href="{{ path("document_show", { 'slug': theme.slug}) }}" class="btn btn-primary">En savoir plus</a></p>
 					</div>
 				</div>
 			{% endfor %}	
