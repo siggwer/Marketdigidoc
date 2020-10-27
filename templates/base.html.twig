@@ -57,9 +57,10 @@
 		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body> 
-        {% block body %}{% endblock %}
-        {% block javascripts %}
 
+        {% block body %}{% endblock %}
+
+        {% block javascripts %}
 	    <!-- jQuery -->
 	    <script src="../js/jquery.min.js"></script>
 	    <!-- jQuery Easing -->
@@ -76,8 +77,10 @@
 	    <script src="../js/jquery.magnific-popup.min.js"></script>
 	    <script src="../js/magnific-popup-options.js"></script>
 	    <!-- Main -->
-	    <script src="../js/main.js"></script>
-        
+		<script src="../js/main.js"></script>
+		<!-- Load more -->
+		<script src="../js/load.more.js"></script>
         {% endblock %}
+
     </body>
 </html>

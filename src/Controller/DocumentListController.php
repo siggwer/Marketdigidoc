@@ -10,13 +10,11 @@ use App\Repository\DocumentRepository;
 
 /**
  * Class ListController.
- *
- * @Route("/document")
  */
-class ListController extends AbstractController
+class DocumentListController extends AbstractController
 {
     /**
-     * @Route("/list", name="document_list", methods={"GET"})
+     * @Route("/document/list", name="document_list", methods={"GET"})
      *
      * @param DocumentRepository $documentRepository
      * @param Request         $request

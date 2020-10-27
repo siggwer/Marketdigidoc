@@ -11,13 +11,11 @@ use Exception;
 
 /**
  * Class ShowController.
- *
- * @Route("/document")
  */
 class ShowController extends AbstractController
 {
     /**
-     * @Route("/{slug}", name="document_show", methods={"GET"})
+     * @Route("/document/{slug}", name="document_show", methods={"GET"})
      *
      * @param Request           $request
      *

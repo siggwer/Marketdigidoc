@@ -10,7 +10,7 @@
 						<!--<li><a href="about.html">About</a></li>-->
 						{% if is_granted("ROLE_USER")%}
 						<li class="has-dropdown">
-							<a href="services.html">Thèmes</a>
+							<a href="{{ path('theme_list') }}">Thèmes</a>
 							<ul class="dropdown">
 								<li><a href="#">Marketing général</a></li>
 								<li><a href="#">eCommerce</a></li>

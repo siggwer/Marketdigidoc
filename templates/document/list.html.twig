@@ -26,33 +26,39 @@
 		</div>
 	</header>
 
+	<!-- DOCUMENT VIEW -->
 	<div id="gtco-features">
 		<div class="gtco-container">
 			<div class="row">
-			{% for document in documents %}
-				<div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
-					<div class="feature-center">
-						<span class="icon">
-						{% if document.category.id == 1 %}
-							<i class="icon-eye"></i>
-						{% else %}
-							<i class="icon-command"></i>
-						{% endif %}		
-						</span>
-						<h3>{{ document.name }}</h3>
-						<p> {{ document.abstract }}</p>
-						 <p>Posté le
-                    		{{ document.publishedAt|date("d/m/Y") }}
-                    		par
-                    		{{ document.author.username }}
-                		</p>
-						<p><a href="{{ path("document_show", { 'slug': document.slug}) }}" class="btn btn-primary">En savoir plus</a></p>
-					</div>
-				</div>
-			{% endfor %}	
+				{# {{ include("document/document.html.twig", { documents: documents }) }} #}
+				{# {% include "document/document.html.twig" %} #}
+				{% for document in documents %}
+	<div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
+		<div class="feature-center blogBox moreBox">
+			<span class="icon">
+				{% if document.category.id == 1 %}
+					<i class="icon-eye"></i>
+				{% else %}
+					<i class="icon-command"></i>
+				{% endif %}		
+			</span>
+			<h3>{{ document.name }}</h3>
+			<p> {{ document.abstract }}</p>
+			<p>Posté le
+                {{ document.publishedAt|date("d/m/Y") }}
+                    par
+                {{ document.author.username }}
+            </p>
+			<p><a href="{{ path("document_show", { 'slug': document.slug}) }}" class="btn btn-primary">En savoir plus</a></p>
+		</div>
+	</div>
+{% endfor %}
 			</div>
 		</div>
 	</div>
 </div>	
+<div class="text-center">
+	<button class="btn btn-info" id="loadMore">Voir plus</button>
+</div>
 
 {% endblock %}

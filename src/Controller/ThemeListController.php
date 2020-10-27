@@ -10,13 +10,11 @@ use App\Repository\DocumentRepository;
 
 /**
  * Class ThemeListController.
- *
- * @Route("/theme")
  */
 class ThemeListController extends AbstractController
 {
     /**
-     * @Route("/list", name="theme_list", methods={"GET"})
+     * @Route("/theme/list", name="theme_list", methods={"GET"})
      *
      * @param DocumentRepository $documentRepository
      * @param Request         $request
@@ -30,11 +28,11 @@ class ThemeListController extends AbstractController
         return $this->render(
             'theme/themeList.html.twig',
              [
-            'themes' => $documentRepository->findBy(
+            'documents' => $documentRepository->findBy(
                  [],
-                 ['publishedAt' => 'desc'],
-                 6,
-                 ($request->query->get('page', 2) - 1) * 6
+                 ['name' => 'asc'],
+                 4,
+                 ($request->query->get('page', 2) - 1) * 4
              ),
              ]
         );

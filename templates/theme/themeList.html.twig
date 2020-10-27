@@ -9,42 +9,28 @@
 	<!-- NAVIGATION -->
 	{% include "nav/nav.html.twig" %}
 
-	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:url(/images/img_bg_3.png);">
-
-		<div class="gtco-container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center">
-					<div class="display-t">
-						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1>Thèmes</h1>
-							<h2>
-							<a href="#" target="_blank"></a></h2>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
+	<!-- HEADER -->
+	{% include "header/header.theme.html.twig" %}
 
 	<div id="gtco-features">
 		<div class="gtco-container">
 			<div class="row">
-			{% for theme in themes %}
+			{% for document in documents %}
 				<div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
 					<div class="feature-center">
 						<span class="icon">
-						{% if theme.category.id == 1 %}
+						{% if document.category.id == 1 %}
 							<i class="icon-eye"></i>
-						{% elseif theme.category.id == 2 %}
+						{% elseif document.category.id == 2 %}
 							<i class="icon-command"></i>
-                        {% elseif theme.category.id == 3 %}
+                        {% elseif document.category.id == 3 %}
 							<i class="icon-pencil"></i>
-                        {% elseif theme.category.id == 4 %}
+                        {% elseif document.category.id == 4 %}
 							<i class="icon-laptop"></i>        
 						{% endif %}		
 						</span>
-						<h3>{{ theme.category.name }}</h3>
-						<p><a href="{{ path("document_show", { 'slug': theme.slug}) }}" class="btn btn-primary">En savoir plus</a></p>
+						<h3>{{ document.category.name }}</h3>
+						<p><a href="{{ path("document_list", { 'document': document.category.name}) }}" class="btn btn-primary">Voir les documents</a></p>
 					</div>
 				</div>
 			{% endfor %}	
