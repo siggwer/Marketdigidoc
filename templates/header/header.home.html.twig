@@ -7,7 +7,7 @@
 							<h1>Marketdigidoc</h1>
 							<h2>Ressources documentaires <a href="#" target="_blank"></a></h2>
 							{% if is_granted("ROLE_USER")%}
-							<p><a href="{{ path('theme_list') }}" class="btn btn-default">Thèmes</a><p>
+							<p><a href="{{ path('theme_list') }}" class="btn btn-default">Voir les Thèmes</a><p>
 							{% else %}
 							<p><a href="{{ path('security_login') }}" class="btn btn-default">Connectez-vous</a></p>
 							{% endif %}

@@ -10,9 +10,9 @@ use App\Entity\Document;
 use Exception;
 
 /**
- * Class ShowController.
+ * Class DocumentShowController.
  */
-class ShowController extends AbstractController
+class DocumentShowController extends AbstractController
 {
     /**
      * @Route("/document/{slug}", name="document_show", methods={"GET"})
