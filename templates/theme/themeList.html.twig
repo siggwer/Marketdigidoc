@@ -16,7 +16,6 @@
 		<div class="gtco-container">
 			<div class="row">
 			{% for document in documents %}
-			{# {{dump(document)}} #}
 				<div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
 					<div class="feature-center">
 						<span class="icon">
@@ -31,7 +30,7 @@
 						{% endif %}		
 						</span>
 						<h3>{{ document.category.name }}</h3>
-						<p><a href="{{ path("document_list", { 'document': document.category.name}) }}" class="btn btn-primary">Voir les documents</a></p>
+						<p><a href="{{ path("document_list", { 'category': document.category.id }) }}" class="btn btn-primary">Voir les documents</a></p>
 					</div>
 				</div>
 			{% endfor %}	

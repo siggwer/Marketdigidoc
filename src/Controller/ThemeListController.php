@@ -21,20 +21,20 @@ class ThemeListController extends AbstractController
      *
      * @return Response
      */
-    public function list(
+    public function themeList(
         DocumentRepository $documentRepository,
         Request $request
     ): Response {
         return $this->render(
             'theme/themeList.html.twig',
-             [
+            [   
             'documents' => $documentRepository->findBy(
-                 [],
-                 ['name' => 'asc'],
-                 4,
-                 ($request->query->get('page', 2) - 1) * 4
-             ),
-             ]
+                [],
+                ['name' => 'asc'],
+                4,
+                ($request->query->get('page', 2) - 1) * 4
+            ),
+            ]
         );
     }
 }
