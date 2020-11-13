@@ -9,7 +9,7 @@
 	<!-- NAVIGATION -->
 	{% include "nav/nav.html.twig" %}
 
-	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:url(/images/img_bg_3.jpg);">
+	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:url(/images/img_bg_3.png);">
 
 		<div class="gtco-container">
 			<div class="row">
@@ -52,7 +52,7 @@
 					</div>
 				</div>
 				<div class="col-md-6">
-                    <div class="gtco-video gtco-bg" style="background-image: url(../images/img_1.jpg); ">
+                    <div class="gtco-video gtco-bg" style="background-image: url(/images/img_1.jpg); ">
                         {% if document.pictureOnFront is not null %}
                             <img class="card-img-top" src="{{ asset(document.pictureOnFront.path) }}" alt="{{ document.pictureOnFront.alt }}">
                         {% else %}
@@ -61,7 +61,7 @@
                     </div>
 				</div>
                 <div class="col-md-6">
-					<div class="gtco-video gtco-bg" style="background-image: url(images/img_1.jpg); ">
+					<div class="gtco-video gtco-bg" style="background-image: url(/images/img_1.jpg); ">
 						<a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo"><i class="icon-video2"></i></a>
 						<div class="overlay"></div>
 					</div>

@@ -10,18 +10,20 @@ use App\Repository\DocumentRepository;
 
 /**
  * Class DocumentListController.
+ *
+ * @Route("/document")
  */
 class DocumentListController extends AbstractController
 {
     /**
-     * @Route("/document/list/", name="document_list", methods={"GET"})
+     * @Route("/list", name="document_list", methods={"GET"})
      *
      * @param DocumentRepository $documentRepository
      * @param Request         $request
      *
      * @return Response
      */
-    public function Categorylist(
+    public function categorylist(
         DocumentRepository $documentRepository,
         Request $request
     ): Response {
