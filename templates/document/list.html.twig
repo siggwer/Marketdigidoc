@@ -8,9 +8,9 @@
 
 	<!-- NAVIGATION -->
 	{% include "nav/nav.html.twig" %}
-
+	
+	<!-- HEADER -->
 	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:url(/images/img_bg_3.png);">
-
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center">
@@ -50,13 +50,13 @@
 			<p><a href="{{ path("document_show", { 'slug': document.slug}) }}" class="btn btn-primary">En savoir plus</a></p>
 		</div>
 	</div>
-{% endfor %}
+				{% endfor %}
 			</div>
 		</div>
 	</div>
 </div>	
 <div class="text-center">
-	<button class="btn btn-info" id="loadMore">Voir plus</button>
+	<button class="btn btn-info" id="load-more">Voir plus</button>
 </div>
 
 {% endblock %}

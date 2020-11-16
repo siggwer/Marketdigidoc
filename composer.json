@@ -1,4 +1,6 @@
 {
+    "name": "siggwer/marketdigidoc",
+    "description": "information resource",
     "type": "project",
     "license": "proprietary",
     "require": {
@@ -40,6 +42,7 @@
     "require-dev": {
         "dama/doctrine-test-bundle": "^6.3",
         "hautelook/alice-bundle": "^2.8",
+        "squizlabs/php_codesniffer": "*",
         "symfony/browser-kit": "^4.4",
         "symfony/css-selector": "^4.4",
         "symfony/debug-bundle": "^4.4",

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,10 +36,10 @@ class DocumentListController extends AbstractController
             'document/list.html.twig',
              [
             'documents' => $documentRepository->findBy(
-                 ['category' => $category],
-                 ['publishedAt' => 'asc'],
-                 6,
-                 ($request->query->get('page', 2) - 1) * 6
+                ['category' => $category],
+                ['publishedAt' => 'desc'], 
+                6,
+                ($request->query->get('page', 2) - 1) * 6
              ),
              ]
         );

@@ -6,7 +6,7 @@ $(function () {
         page++;
 
         $.ajax({
-            url: "/document/document",
+            url: "/document/list",
             data: {
                 page: page
             },

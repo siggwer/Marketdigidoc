@@ -9,15 +9,15 @@
 						<li class="active"><a href="{{ path('home') }}">Accueil</a></li>
 						<!--<li><a href="about.html">About</a></li>-->
 						{% if is_granted("ROLE_USER")%}
-						<li class="has-dropdown">
-							<a href="{{ path('theme_list') }}">Thèmes</a>
+						{# <li class="has-dropdown">
+							<a href="#document">Thèmes</a>
 							<ul class="dropdown">
 								<li><a href="#">Marketing général</a></li>
 								<li><a href="#">eCommerce</a></li>
 								<li><a href="#">Branding</a></li>
 								<li><a href="#">Référencement</a></li>
 							</ul>
-						</li>
+						</li> #}
 					
 						{# <li class="has-dropdown">
 							<a href="#">Tools</a>

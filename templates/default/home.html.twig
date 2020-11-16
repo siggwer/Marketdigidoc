@@ -10,8 +10,59 @@
 		{% include "nav/nav.html.twig" %}
 
 		<!-- HEADER -->
-		{% include "header/header.home.html.twig" %}
-
+		<header id="gtco-header" class="gtco-cover" role="banner" style="background-image:url(images/img_bg_4.png);">
+			<div class="gtco-container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center">
+						<div class="display-t">
+							<div class="display-tc animate-box" data-animate-effect="fadeIn">
+								<h1>Marketdigidoc</h1>
+								<h2>Ressources documentaires <a href="#" target="_blank"></a></h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</header>
+	
+		{% if app.user %}
+		<div id="gtco-features">
+			<div class="gtco-container">
+				<div class="row">
+				{% for document in documents %}
+					<div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
+						<div class="feature-center">
+							<span class="icon">
+								{% if document.category.id == 1 %}
+								<i class="icon-eye"></i>
+								{% elseif document.category.id == 2 %}
+								<i class="icon-command"></i>
+                        		{% elseif document.category.id == 3 %}
+								<i class="icon-pencil"></i>
+                        		{% elseif document.category.id == 4 %}
+								<i class="icon-laptop"></i>        
+								{% endif %}		
+								</span>
+							<h3>{{ document.category.name }}</h3>
+							<p><a href="{{ path("document_list", { 'category': document.category.id }) }}" class="btn btn-primary">Voir les documents</a></p>
+						</div>
+					</div>
+				{% endfor %}
+				</div>	
+			</div>
+		</div>
+		{% else %}
+		<div id="gtco-features">
+			<div class="gtco-container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+						<p><a href="{{ path('security_login') }}" class="btn btn-primary">Connectez-vous</a></p>
+					</div>
+				</div>	
+			</div>
+		</div>
+		{% endif %}
+		
 	</div>
 
 	<div class="gototop js-top">

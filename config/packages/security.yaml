@@ -34,3 +34,6 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY , methods: [GET, POST]}
+        - { path: ^/theme, roles: ROLE_USER, methods: [GET, POST]}
+        - { path: ^/document, roles: ROLE_USER, methods: [GET, POST] }

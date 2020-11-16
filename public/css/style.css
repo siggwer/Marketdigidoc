@@ -330,7 +330,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .gtco-cover {
-  height: 900px;
+  height: 400px;
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
@@ -362,7 +362,7 @@ h1, h2, h3, h4, h5, h6, figure {
 
 .gtco-cover .display-t,
 .gtco-cover .display-tc {
-  height: 900px;
+  height: 500px;
   display: table;
   width: 100%;
 }
@@ -375,7 +375,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .gtco-cover.gtco-cover-sm {
-  height: 600px;
+  height: 400px;
 }
 
 @media screen and (max-width: 768px) {
@@ -386,7 +386,7 @@ h1, h2, h3, h4, h5, h6, figure {
 
 .gtco-cover.gtco-cover-sm .display-t,
 .gtco-cover.gtco-cover-sm .display-tc {
-  height: 600px;
+  height: 450px;
   display: table;
   width: 100%;
 }
