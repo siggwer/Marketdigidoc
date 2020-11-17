@@ -8,9 +8,16 @@
 
 	<!-- NAVIGATION -->
 	{% include "nav/nav.html.twig" %}
-
-	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:url(/images/img_bg_3.png);">
-
+		{% if document.category.id == 1 %}
+				<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:url(/images/Img_category_marketing_1.png);">
+			{% elseif document.category.id == 2 %}
+				<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:url(/images/Img_category_ecommerce_1.png);">
+            {% elseif document.category.id == 3 %}
+				<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:url(/images/Img_category_branding_1.png);">
+            {% elseif document.category.id == 4 %}
+				<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:url(/images/Img_category_referencement_1.png);">        
+			{% endif %}
+	{# <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:url(/images/img_bg_3.png);"> #}
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center">
@@ -41,7 +48,6 @@
 							<i class="icon-check"></i>
 						</span>
 						<div class="feature-copy">
-							{# <h3>Retina Ready</h3> #}
 							<p>{{ document.description }}</p>
                             <p>Publié le
                                 {{ document.publishedAt|date("d/m/Y") }}

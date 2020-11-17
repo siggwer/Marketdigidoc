@@ -10,7 +10,7 @@
 		{% include "nav/nav.html.twig" %}
 
 		<!-- HEADER -->
-		<header id="gtco-header" class="gtco-cover" role="banner" style="background-image:url(images/img_bg_4.png);">
+		<header id="gtco-header" class="gtco-cover" role="banner" style="background-image:url(images/Img_accueil_1.png);">
 			<div class="gtco-container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center">
@@ -25,32 +25,22 @@
 			</div>	
 		</header>
 	
-		{% if app.user %}
-		<div id="gtco-features">
-			<div class="gtco-container">
-				<div class="row">
-				{% for document in documents %}
-					<div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
-						<div class="feature-center">
-							<span class="icon">
-								{% if document.category.id == 1 %}
-								<i class="icon-eye"></i>
-								{% elseif document.category.id == 2 %}
-								<i class="icon-command"></i>
-                        		{% elseif document.category.id == 3 %}
-								<i class="icon-pencil"></i>
-                        		{% elseif document.category.id == 4 %}
-								<i class="icon-laptop"></i>        
-								{% endif %}		
-								</span>
-							<h3>{{ document.category.name }}</h3>
-							<p><a href="{{ path("document_list", { 'category': document.category.id }) }}" class="btn btn-primary">Voir les documents</a></p>
-						</div>
-					</div>
-				{% endfor %}
-				</div>	
-			</div>
+		<!-- DOCUMENT VIEW -->
+		<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+			<h2>Tous les documents</h2>
 		</div>
+
+		{% if app.user %}
+		<div class="gtco-features">
+			<div class="gtco-container">
+				<div class="row" id="listDocument">
+            		{{ include ('document/list.html.twig', { documents: documents }) }}
+				</div>
+			</div>	
+			<div class="text-center">
+			<button class="btn btn-info" id="load-more">Voir plus</button>
+		</div>
+    	</div>
 		{% else %}
 		<div id="gtco-features">
 			<div class="gtco-container">
@@ -65,8 +55,16 @@
 		
 	</div>
 
+	<!-- FOOTER -->
+	{% include "footer/footer.html.twig" %}
+
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
 
 {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="../js/load.more.js"></script>
+{% endblock %}
+

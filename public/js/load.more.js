@@ -11,7 +11,7 @@ $(function () {
                 page: page
             },
             success: function (html) {
-                $("#documents").append(html);
+                $("#listDocument").append(html);
             }
         });
     })

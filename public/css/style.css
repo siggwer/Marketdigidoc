@@ -124,6 +124,10 @@ h1, h2, h3, h4, h5, h6, figure {
   color: #fff;
 }
 
+.gtco-nav a:hover {
+  color: #286090;
+}
+
 @media screen and (max-width: 768px) {
   .gtco-nav .menu-1, .gtco-nav .menu-2 {
     display: none;
@@ -250,7 +254,11 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .gtco-nav ul li.active > a {
-  color: #fff !important;
+  color: #286090 !important;
+}
+
+.gtco-nav ul li.active > a:hover {
+  color: #ffffff !important;
 }
 
 #gtco-header,
@@ -545,7 +553,7 @@ form label {
 .gtco-cover .display-tc h2 {
   margin: 0;
   padding: 0;
-  color: white;
+  color: /*white*/#286090;
   text-transform: uppercase;
 }
 
@@ -647,6 +655,16 @@ form label {
 .gtco-section {
   padding: 7em 0;
   clear: both;
+}
+
+#gtco-footer {
+  padding: 1em !important;
+  margin-top: 200px;
+  background: #286090;
+}
+
+.footer {
+  color: #ffffff !important;
 }
 
 @media screen and (max-width: 768px) {
@@ -1040,7 +1058,7 @@ form label {
 }
 
 #gtco-footer .gtco-footer-links li a {
-  color: #000;
+  color: #ffffff;
   text-decoration: none;
 }
 

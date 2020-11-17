@@ -1,45 +1,14 @@
-{% extends 'base.html.twig' %}
-
-{% block body %}
-
-<div class="gtco-loader"></div>
-	
-<div id="page">
-
-	<!-- NAVIGATION -->
-	{% include "nav/nav.html.twig" %}
-	
-	<!-- HEADER -->
-	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:url(/images/img_bg_3.png);">
-		<div class="gtco-container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center">
-					<div class="display-t">
-						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1>Thème marketing</h1>
-							<h2>
-							<a href="#" target="_blank"></a></h2>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
-
-	<!-- DOCUMENT VIEW -->
-	<div id="gtco-features">
-		<div class="gtco-container">
-			<div class="row">
-				{% for document in documents %}
-	<div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
-		<div class="feature-center blogBox moreBox">
+{% for document in documents %}
+	<div class="col-md-4 col-sm-4 animate-box blogBox moreBox fadeIn animated-fast" data-animate-effect="fadeIn">
+		<div class="feature-center">
 			<span class="icon">
 				{% if document.category.id == 1 %}
 					<i class="icon-eye"></i>
 				{% else %}
 					<i class="icon-command"></i>
-				{% endif %}		
+				{% endif %}	
 			</span>
+			<P class="small">{{ document.category.name }}</p>
 			<h3>{{ document.name }}</h3>
 			<p> {{ document.abstract }}</p>
 			<p>Posté le
@@ -50,13 +19,6 @@
 			<p><a href="{{ path("document_show", { 'slug': document.slug}) }}" class="btn btn-primary">En savoir plus</a></p>
 		</div>
 	</div>
-				{% endfor %}
-			</div>
-		</div>
-	</div>
-</div>	
-<div class="text-center">
-	<button class="btn btn-info" id="load-more">Voir plus</button>
-</div>
+{% endfor %}
 
-{% endblock %}
+

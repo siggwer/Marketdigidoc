@@ -28,11 +28,7 @@ class HomeController extends AbstractController
         return $this->render(
             'default/home.html.twig',
             [
-            'documents' => $documentRepository->findBy(
-                [],
-                ['publishedAt' => 'desc'],
-                4,0
-            ),
+            'documents' => $documentRepository->findBy([],['publishedAt' => 'desc'],6,0),
             ]
         );
     }

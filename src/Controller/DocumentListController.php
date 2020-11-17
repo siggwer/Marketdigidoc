@@ -25,7 +25,7 @@ class DocumentListController extends AbstractController
      *
      * @return Response
      */
-    public function categorylist(
+    public function list(
         DocumentRepository $documentRepository,
         Request $request
     ): Response {
@@ -36,7 +36,7 @@ class DocumentListController extends AbstractController
             'document/list.html.twig',
              [
             'documents' => $documentRepository->findBy(
-                ['category' => $category],
+                [],
                 ['publishedAt' => 'desc'], 
                 6,
                 ($request->query->get('page', 2) - 1) * 6
