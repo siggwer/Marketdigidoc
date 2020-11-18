@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\DocumentRepository;
 use App\Handler\DocumentAddHandler;
-use App\Form\DocumentAddType;
+use App\Form\AddType;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use Twig\Error\LoaderError;
@@ -113,7 +113,7 @@ class DocumentAddController
         
         $document = new Document();
 
-        $form = $this->formFactory->create(DocumentAddType::class, $document)
+        $form = $this->formFactory->create(AddType::class, $document)
             ->handleRequest($request);
 
         if ($documentAddHandler->handle($form, $document)) {

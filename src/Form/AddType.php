@@ -15,9 +15,11 @@ use App\Entity\Category;
 use App\Entity\Document;
 
 /**
- * Class DocummentAddType.
+ * Class AddType
+ *
+ * @package App\Form
  */
-class DocumentAddType extends AbstractType
+class AddType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
