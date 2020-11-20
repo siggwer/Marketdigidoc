@@ -30,9 +30,9 @@
 		<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
 			<h2>Mon compte</h2>
 		</div>
-        {% if document in documents %}
-          {{dump(documents)}}
-        {% endif %}
+        {% for document in documents %}
+          {{dump(document)}}
+        {% endfor %}
    
 		<div class="gtco-features">
 			<div class="gtco-container">
