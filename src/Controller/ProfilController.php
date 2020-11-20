@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use App\Entity\Document;
-use App\Entity\User;
+use App\Repository\DocumentRepository;
 use Exception;
 
 /**
@@ -19,5 +19,22 @@ use Exception;
  */
 class ProfilController extends AbstractController
 {
+    /**
+     * @Route("/my-account", name="my_account", methods="GET")
+     * 
+     * @param DocumentRepository $documentRepository
+     *
+     * @return void
+     */
+    public function showProfil(UserInterface $user, DocumentRepository $documentRepository) 
+    {
+        return $this->render('security/user/profil.html.twig',
+            [
+                'documents' => $documentRepository->findBy(
+                    ['author' => $user->getUsername()],
+                    ['publishedAt' => 'desc'],6,0),
+            ]
+        );
+    }
 
 }

@@ -33,7 +33,7 @@ class DocumentAddHandler
     private $messageFlash;
 
     /**
-     * TaskCreateHandler constructor.
+     * DocumentAddHandler constructor.
      *
      * @param DocumentRepository    $documentRepository
      * @param TokenStorageInterface $tokenStorage

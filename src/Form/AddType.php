@@ -50,6 +50,17 @@ class AddType extends AbstractType
                 ]
             )
             ->add(
+                'abstract',
+                TextareaType::class,
+                [
+                'label' => 'Donnez une extrait',
+                'required' => true,
+                'attr' => array(
+                    'placeholder' => 'Extrait',
+                ),
+                ]
+            )
+            ->add(
                 'description',
                 TextareaType::class,
                 [

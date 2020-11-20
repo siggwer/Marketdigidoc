@@ -17,7 +17,7 @@ use App\Repository\DocumentRepository;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/", name="home", methods="GET")
      * 
      * @param DocumentRepository $documentRepository
      *

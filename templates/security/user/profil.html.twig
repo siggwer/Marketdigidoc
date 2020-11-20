@@ -10,14 +10,14 @@
 		{% include "nav/nav.html.twig" %}
 
 		<!-- HEADER -->
-		<header id="gtco-header" class="gtco-cover" role="banner" style="background-image:url(images/Img_accueil_1.png);">
+		<header id="gtco-header" class="gtco-cover" role="banner" style="background-image:url(../images/Img_accueil_1.png);">
 			<div class="gtco-container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center">
 						<div class="display-t">
 							<div class="display-tc animate-box" data-animate-effect="fadeIn">
-								<h1>Marketdigidoc</h1>
-								<h2>Ressources documentaires <a href="#" target="_blank"></a></h2>
+								<h1>Mon compte</h1>
+								<h2><a href="#" target="_blank"></a></h2>
 							</div>
 						</div>
 					</div>
@@ -28,29 +28,24 @@
 		<!-- DOCUMENT VIEW -->
 		{% if app.user %}
 		<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-			<h2>Tous les documents</h2>
+			<h2>Mon compte</h2>
 		</div>
-
+        {% if document in documents %}
+          {{dump(documents)}}
+        {% endif %}
+   
 		<div class="gtco-features">
 			<div class="gtco-container">
 				<div class="row" id="listDocument">
-            		{{ include ('document/list.html.twig', { documents: documents }) }}
+            		{# {{ include ('', {  }) }} #}
 				</div>
 			</div>	
 			<div class="text-center">
-				<button class="btn btn-info" id="load-more">Voir plus</button>
+				<a href="/" class="btn btn-primary">Retour à l'accueil</a>
 			</div>
     	</div>
 		{% else %}
-		<div id="gtco-features">
-			<div class="gtco-container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-						<p><a href="{{ path('security_login') }}" class="btn btn-primary">Connectez-vous</a></p>
-					</div>
-				</div>	
-			</div>
-		</div>
+	
 		{% endif %}
 		
 	</div>
@@ -62,9 +57,5 @@
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
 
-{% endblock %}
-{% block javascripts %}
-    {{ parent() }}
-    <script src="../js/load.more.js"></script>
 {% endblock %}
 

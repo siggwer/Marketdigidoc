@@ -657,6 +657,10 @@ form label {
   clear: both;
 }
 
+.form {
+  padding: 0;
+}
+
 #gtco-footer {
   padding: 1em !important;
   margin-top: 200px;
@@ -1534,6 +1538,10 @@ form label {
   right: 18px;
   visibility: visible;
   opacity: 1;
+}
+
+.showButton {
+  margin-top: 5em;
 }
 
 .form-control {
