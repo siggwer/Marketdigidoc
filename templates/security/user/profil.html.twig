@@ -28,16 +28,13 @@
 		<!-- DOCUMENT VIEW -->
 		{% if app.user %}
 		<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-			<h2>Mon compte</h2>
+			<h2>Mes documents</h2>
 		</div>
-        {% for document in documents %}
-          {{dump(document)}}
-        {% endfor %}
-   
+        
 		<div class="gtco-features">
 			<div class="gtco-container">
 				<div class="row" id="listDocument">
-            		{# {{ include ('', {  }) }} #}
+            		 {{ include ('security/user/userShow.html.twig', { documents: documents }) }} 
 				</div>
 			</div>	
 			<div class="text-center">

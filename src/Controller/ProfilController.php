@@ -28,19 +28,15 @@ class ProfilController extends AbstractController
      */
     public function showProfil(UserInterface $user, DocumentRepository $documentRepository) 
     {
-        
-        $document = $documentRepository->findBy(
-            ['author' => $user->getUsername()]
-);
-    dd($document);
-        exit;
+        $user = $user->getId();
+
         return $this->render('security/user/profil.html.twig',
             [
                 'documents' => $documentRepository->findBy(
-                    ['author' => $user->getUsername()],
-                    ['publishedAt' => 'desc'],6,0),
+                ['author' => $user],
+                ['publishedAt' => 'desc'],6,0),
             ]
-        );
-    }
+         );
+     }
 
 }

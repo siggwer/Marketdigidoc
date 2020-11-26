@@ -12,9 +12,7 @@
 			<h3>{{ document.name }}</h3>
 			<p> {{ document.abstract }}</p>
 			<p>Posté le
-                {{ document.publishedAt|date("d/m/Y") }}
-                    par
-                {{ document.author.username }}
+               	{{ document.publishedAt|date("d/m/Y") }}
             </p>
 			<p><a href="{{ path("document_show", { 'slug': document.slug}) }}" class="btn btn-primary">En savoir plus</a></p>
 		</div>

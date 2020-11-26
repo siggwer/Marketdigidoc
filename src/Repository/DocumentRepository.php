@@ -22,7 +22,23 @@ class DocumentRepository extends ServiceEntityRepository
         parent::__construct($registry, Document::class);
     }
 
-    // /**
+    /**
+     * @param [integer] $id
+     * 
+     * @return void
+     */
+    public function getDocument($id)
+    {
+        return $this->createQueryBuilder('d')
+                    ->leftJoin('d.user', 'user')
+                    ->addSelect('user')
+                    ->where('d.author_id = :id')
+                    ->setParameter('author_id', $id)
+                    ->getQuery()
+                    ->getOneOrNullResult();
+    }
+
+// /**
     //  * @return document[] Returns an array of document objects
     //  */
     /*

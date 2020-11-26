@@ -122,7 +122,7 @@ class UserRepository extends ServiceEntityRepository
         $q = $qb->getQuery();
         $q->execute();
     }
-
+    
     // /**
     //  * @return User[] Returns an array of User objects
     //  */
