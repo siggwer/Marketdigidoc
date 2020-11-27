@@ -22,8 +22,8 @@ class DocumentShowController extends AbstractController
      * @Route("/{slug}", name="document_show", methods={"GET"})
      *
      * @param Request           $request
-     * @param  Document         $document
-     *
+     * @param Document          $document
+     * 
      * @return Response
      *
      * @throws Exception

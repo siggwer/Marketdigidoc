@@ -1,38 +1,4 @@
-{% extends 'base.html.twig' %}
-
-{% block body %}
-
-<div class="gtco-loader"></div>
-	
-<div id="page">
-
-	<!-- NAVIGATION -->
-	{% include "nav/nav.html.twig" %}
-
-		<!-- HEADER -->
-		{% if document.category.id == 1 %}
-				<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:url(/images/Img_category_marketing_1.png);">
-			{% elseif document.category.id == 2 %}
-				<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:url(/images/Img_category_ecommerce_1.png);">
-            {% elseif document.category.id == 3 %}
-				<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:url(/images/Img_category_branding_1.png);">
-            {% elseif document.category.id == 4 %}
-				<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:url(/images/Img_category_referencement_1.png);">        
-			{% endif %}
-		<div class="gtco-container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center">
-					<div class="display-t">
-						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1>Détails</h1>
-							<h2><a href="#" target="_blank"></a></h2>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
-
+{% for document in documents %}
 <!-- DOCUMENT VIEW -->
 <div id="gtco-features-2">
 		<div class="gtco-container">
@@ -76,18 +42,5 @@
 				</div>
 			</div>
 		</div>
-		<div class="text-center showButton">
-				<a href="{{ path("document_to_pdf", { 'slug': document.slug}) }}" class="btn btn-primary">Télécharger en PDF</a>
-		</div>
 	</div>
-
-	<!-- FOOTER -->
-	{% include "footer/footer.html.twig" %}
-
-	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
-	</div>
-
-</div>
-
-{% endblock %}
+{% endfor %}    
