@@ -1,4 +1,10 @@
-{% for document in documents %}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="gtco-loader"></div>
+	
+<div id="page">
 <!-- DOCUMENT VIEW -->
 <div id="gtco-features-2">
 		<div class="gtco-container">
@@ -43,4 +49,6 @@
 			</div>
 		</div>
 	</div>
-{% endfor %}    
+</div>
+
+{% endblock %}   

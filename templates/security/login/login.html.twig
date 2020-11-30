@@ -3,15 +3,14 @@
 {% block body %}
 
 	<!-- HEADER -->
-	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:url(/images/img_bg_3.png);">
+	<header id="gtco-header" class="gtco-cover gtco-cover-sm loginConn" role="banner" style="background-image:url(/images/img_login_1.png);">
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center">
 					<div class="display-t">
 						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1>Connexion</h1>
-							<h2>
-							<a href="#" target="_blank"></a></h2>
+							<h1></h1>
+							<h2><a href="#" target="_blank"></a></h2>
 						</div>
 					</div>
 				</div>
@@ -24,6 +23,7 @@
 	<div class="gtco-container">
 		<div class="row">
 			    <div class="col-md-8 animate-box login">
+					<h1>Connexion</h1>
                      {% if error %}
                         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                     {% endif %}

@@ -111,6 +111,9 @@
     "gedmo/doctrine-extensions": {
         "version": "v3.0.0"
     },
+    "h4cc/wkhtmltopdf-amd64": {
+        "version": "0.12.4"
+    },
     "hautelook/alice-bundle": {
         "version": "2.1",
         "recipe": {
