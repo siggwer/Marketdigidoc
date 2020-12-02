@@ -2,8 +2,7 @@ knp_snappy:
     pdf:
         enabled:    true
         binary:     wkhtmltopdf
-        options:    
-             "disable-local-file-access": ""
+        options:    []
     image:
         enabled:    true
         binary:     wkhtmltoimage

@@ -29,7 +29,10 @@ class DocumentToPdf extends AbstractController
     * @return void
     */
     public function actionToPdf(Document $document, Request $request, \Knp\Snappy\Pdf $snappy)
-    {
+    { 
+        $slug = $document->getSlug();
+
+        
         $path = $request->getPathInfo();
         //dd($request);
 
@@ -60,6 +63,7 @@ class DocumentToPdf extends AbstractController
     //   $dompdf->stream("mypdf.pdf", [
     //       "Attachment" => false
     //   ]);
+ 
       $snappy = new Pdf("\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"");
       
       $filename = 'myFirstSnappyPDF';
@@ -68,17 +72,26 @@ class DocumentToPdf extends AbstractController
       $html = $this->renderView('document/pdf.view.html.twig', array(
         'document' => $document
     ));
-    
-      //dd($html);
-     
 
-        return new Response(
-            $snappy->getOutputFromHtml($html),
-            200,
+      // use absolute path !
+    //   $pageUrl = $this->generateUrl('127.0.0.1:8000/document/pdf/'.$slug, array(), UrlGeneratorInterface::ABSOLUTE_URL);
+    //   dd($pageUrl);
+    //   return new Response(
+    //     $snappy->getOutput($pageUrl),
+    //     200,
+    //     array(
+    //         'Content-Type'          => 'application/pdf',
+    //         'Content-Disposition'   => 'inline; filename="'.$filename.'.pdf"'
+    //     )
+    // );
+    
+         return new Response(
+             $snappy->getOutputFromHtml($html),
+             200,
             array(
-                'Content-Type'          => 'application/pdf',
-                'Content-Disposition'   => 'inline; filename="'.$filename.'.pdf"'
-            )
-        );
+                 'Content-Type'          => 'application/pdf',
+                 'Content-Disposition'   => 'inline; filename="'.$filename.'.pdf"'
+             )
+         );
     }
 }
