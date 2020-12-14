@@ -14,23 +14,23 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use App\Handler\DocumentUpdateHandler;
 use App\Repository\DocumentRepository;
-use App\Handler\DocumentAddHandler;
 use Twig\Error\RuntimeError;
-use Twig\Error\SyntaxError;
 use Twig\Error\LoaderError;
+use Twig\Error\SyntaxError;
 use App\Entity\Document;
-use App\Form\AddType;
+use App\Form\UpdateType;
 use Twig\Environment;
 
 /**
- * Class DocumentAddController
+ * Class DocumentUpdateController
  *
  * @package App\Controller
  *
  * @Route("/document")
  */
-class DocumentAddController extends AbstractController
+class DocumentUpdateController extends AbstractController
 {
     /**
      * @var DocumentRepository
@@ -68,7 +68,7 @@ class DocumentAddController extends AbstractController
     private $authorization;
 
     /**
-     * DocumentAdd constructor.
+     * DocumentUpdate constructor.
      *
      * @param DocumentRepository $documentRepository
      * @param TokenStorageInterface         $tokenStorage
@@ -97,26 +97,30 @@ class DocumentAddController extends AbstractController
     }
 
     /**
-     * @Route("/add", name="document_add", methods={"GET", "POST"})
+     * @Route("/update", name="document_update", methods={"GET", "POST"})
      *
-     * @param DocumentAddHandler $documentAddHandler
      * @param Request $request
+     * @param Document $document
+     * @param DocumentUpdateHandler $documentUpdateHandler
+     *
      * @return RedirectResponse|Response
      *
      * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
      */
-    public function add(
-        DocumentAddHandler $documentAddHandler,
-        Request $request
-        ) {
+    public function update(
+        Request $request,
+        Document $document,
+        DocumentUpdateHandler $documentUpdateHandler
+    )
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        $document = new Document();
-        $form = $this->formFactory->create(AddType::class, $document)
+        $form = $this->formFactory->create(UpdateType::class, $document)
             ->handleRequest($request);
 
-        if ($documentAddHandler->handle($form, $document)) {
+        if ($documentUpdateHandler->handle($form, $document)) {
             return new RedirectResponse(
                 $this->urlGenerator->generate('document_list'),
                 RedirectResponse::HTTP_FOUND
@@ -125,7 +129,7 @@ class DocumentAddController extends AbstractController
 
         return new Response(
             $this->twig->render(
-                'document/add.html.twig',
+                'document/update.html.twig',
                 [
                     'form' => $form->createView()
                 ]

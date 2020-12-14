@@ -1,0 +1,100 @@
+{{ form_start(form) }}
+{{ form_errors(form) }}
+{{ form_widget(form._token) }}
+    <div class="col-md-12 animate-box">
+                <h3></h3>
+                <form action="#">
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label for="name">Titre du document</label>
+                            {{ form_widget(form.name, {'attr': {'placeholder': 'Titre du document'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label for="category">Sélectionnez une catégorie</label>
+                             {{ form_widget(form.category, {'attr': {'placeholder': 'Choississez la catégorie'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label for="abstract">Extrait</label>
+                            {{ form_widget(form.abstract, {'attr': {'placeholder': 'Donnez un extrait'}}) }}
+                        </div>
+                    </div>
+                   
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label for="description">Description</label>
+                            {{ form_widget(form.description, {'attr': {'placeholder': 'Description du document'}}) }}
+                        </div>
+                    </div>
+                        <div id="picture-on-front-0" class="card">
+                            <div id="pictures_on_front-{{ form.vars.name }}" class='card-body d-block mx-auto p-0 picture-preview' data-input="document_pictureOnFront_uploadedFile"></div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Ajouter une image principale :</label>
+                    {{ form_widget(form.pictureOnFront.alt, {'attr': {'placeholder': 'Texte alternatif'}}) }}
+                </div>
+            </div>
+            <div class="card-footer">
+                {{ form_widget(form.pictureOnFront.uploadedFile, {'attr': {'placeholder': 'Modifier l\'image principale', 'class': 'img-upload'}}) }}
+                <label for="document_pictureOnFront_uploadedFile"  class="btn btn-primary m-0">
+                    <span class="fa fa-upload"></span>
+                </label>
+            </div>
+            </div>
+            <br/>
+         <div class="row">
+            <div class="col-lg-8 col-md-8 d-block mx-auto">
+            <div id="document_pictures"
+             class="form-group"
+             data-index="{{ form.pictures|length > 0 ? form.pictures|last.vars.name + 1 : 0 }}"
+             data-prototype="{{ include('form/_picture.html.twig', { form: form.pictures.vars.prototype })|e('html_attr') }}">
+            {% for picture in form.pictures %}
+                {{ include('form/_picture.html.twig', { form: picture }) }}
+            {% endfor %}
+         </div>
+            <div>
+            <label for="document_picture" class="d-flex justify-content-between">
+                <button type="button" class="btn btn-primary float-right document-picture">Ajouter une image</button>
+            </label>
+         </div>
+            <!-- end add picture// -->
+            <br>
+            <div id="document_videos"
+             class="row mb-4"
+             data-index="{{ form.videos|length > 0 ? form.videos|last.vars.name + 1 : 0 }}"
+             data-prototype="{{ include('form/_video.html.twig', { form: form.videos.vars.prototype })|e('html_attr') }}">
+            {% for video in form.videos %}
+                {{ include('form/_video.html.twig', { form: video }) }}
+            {% endfor %}
+            </div>
+            <div>
+            <label for="document_video" class="d-flex justify-content-between">
+                <button type="button" class="btn btn-primary float-right document-video">Ajouter une video</button>
+            </label>
+         </div>
+            <!-- end add video// -->
+         </div>
+            </div>
+                    <div class="form-group">
+                        <a href="/" class="btn btn-primary float-left">Accueil</a>
+                        {% if form.vars.data.id is not null %}
+                            <a href="{{ path("document_show", { 'slug': document.slug }) }}" class="btn btn-info">Voir le document</a>
+                        {% endif %}
+                        <button type="submit" class="btn btn-success float-right">
+                            {% if form.vars.data.id is null %}
+                                Ajouter
+                            {% else %}
+                                Modifier
+                            {% endif %}
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+            
+{{ form_end(form, { render_rest: false }) }}

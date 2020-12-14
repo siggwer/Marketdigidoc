@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="gtco-loader"></div>
+	
+<div id="page">
+
+    <!-- NAVIGATION -->
+    {% include "nav/nav.html.twig" %}
+
+    <!-- HEADER -->
+    <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image:url(/images/Img_document_add_1.png);">
+        <div class="gtco-container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <div class="display-t">
+                        <div class="display-tc animate-box" data-animate-effect="fadeIn">
+                            <h1>Modifier le document</h1>
+                            <h2><a href="#" target="_blank"></a></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- FORM VIEW -->
+    <div class="gtco-section form">
+        <div class="gtco-container">
+            <div class="row">
+                {{ include("form/_update_form.html.twig", { form: form }) }}
+            </div>
+        </div>
+    </div>
+
+
+	<!-- FOOTER -->
+	{% include "footer/footer.html.twig" %}
+
+</div>	
+
+{% endblock %}

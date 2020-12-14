@@ -1,6 +1,5 @@
 <?php
 
-declare(strict_types=1);
 
 namespace App\Form;
 
@@ -15,15 +14,15 @@ use App\Entity\Category;
 use App\Entity\Document;
 
 /**
- * Class AddType
+ * Class UpdateType
  *
  * @package App\Form
  */
-class AddType extends AbstractType
+class UpdateType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array                $options
+     * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -32,77 +31,77 @@ class AddType extends AbstractType
                 'name',
                 TextType::class,
                 [
-                'label' => 'Nom du document',
-                'required' => false,
-                'attr' => array(
-                    'placeholder' => 'Titre',
-                ),
+                    'label' => 'Nom du document',
+                    'required' => false,
+                    'attr' => array(
+                        'placeholder' => 'Titre',
+                    ),
                 ]
             )
             ->add(
                 'category',
                 EntityType::class,
                 [
-                'class' => Category::class,
-                'choice_label' => 'name',
-                'label' => 'Indiquez la catégorie',
-                'required' => true,
+                    'class' => Category::class,
+                    'choice_label' => 'name',
+                    'label' => 'Indiquez la catégorie',
+                    'required' => true,
                 ]
             )
             ->add(
                 'abstract',
                 TextareaType::class,
                 [
-                'label' => 'Donnez une extrait',
-                'required' => true,
-                'attr' => array(
-                    'placeholder' => 'Extrait',
-                ),
+                    'label' => 'Donnez une extrait',
+                    'required' => true,
+                    'attr' => array(
+                        'placeholder' => 'Extrait',
+                    ),
                 ]
             )
             ->add(
                 'description',
                 TextareaType::class,
                 [
-                'label' => 'Indiquez une description',
-                'required' => true,
-                'attr' => array(
-                    'placeholder' => 'Description',
-                ),
+                    'label' => 'Indiquez une description',
+                    'required' => true,
+                    'attr' => array(
+                        'placeholder' => 'Description',
+                    ),
                 ]
             )
             ->add(
                 'pictureOnFront',
                 PictureType::class,
                 [
-                'label' => false,
-                'attr' => array(
-                    'placeholder' => 'Image principale',
-                ),
+                    'label' => false,
+                    'attr' => array(
+                        'placeholder' => 'Image principale',
+                    ),
                 ]
             )
             ->add(
                 'pictures',
                 CollectionType::class,
                 [
-                'label' => false,
-                'entry_type' => PictureType::class,
-                'entry_options' => ['label' => false],
-                'allow_add' => true,
-                'allow_delete' => true,
-                'by_reference' => false,
+                    'label' => false,
+                    'entry_type' => PictureType::class,
+                    'entry_options' => ['label' => false],
+                    'allow_add' => true,
+                    'allow_delete' => true,
+                    'by_reference' => false,
                 ]
             )
             ->add(
                 'videos',
                 CollectionType::class,
                 [
-                'label' => false,
-                'entry_type' => VideoType::class,
-                'entry_options' => ['label' => false],
-                'allow_add' => true,
-                'allow_delete' => true,
-                'by_reference' => false,
+                    'label' => false,
+                    'entry_type' => VideoType::class,
+                    'entry_options' => ['label' => false],
+                    'allow_add' => true,
+                    'allow_delete' => true,
+                    'by_reference' => false,
                 ]
             );
     }
