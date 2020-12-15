@@ -97,7 +97,7 @@ class DocumentUpdateController extends AbstractController
     }
 
     /**
-     * @Route("/update", name="document_update", methods={"GET", "POST"})
+     * @Route("/update/{slug}", name="document_update", methods={"GET", "POST"})
      *
      * @param Request $request
      * @param Document $document

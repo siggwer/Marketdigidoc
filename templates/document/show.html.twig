@@ -81,6 +81,9 @@
 		</div> #}
 		<div class="text-center showButton">
 				<a href="{{ path("document_to_pdf", { 'slug': document.slug }) }}" class="btn btn-primary">Télécharger en PDF</a>
+			{% if is_granted("ROLE_USER") %}
+				<a href="{{ path("document_update", { 'slug': document.slug }) }}" class="btn btn-warning float-right">Modifier le document</a>
+			{% endif %}
 		</div>
 	</div>
 
