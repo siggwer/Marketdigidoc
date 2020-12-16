@@ -131,6 +131,7 @@ class DocumentUpdateController extends AbstractController
             $this->twig->render(
                 'document/update.html.twig',
                 [
+                    'document' => $document,
                     'form' => $form->createView()
                 ]
             ),
