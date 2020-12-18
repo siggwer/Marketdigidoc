@@ -76,13 +76,19 @@
 				</div>
 			</div>
 		</div>
-		{# <div class="text-center showButton">
-				<a href="{{ path("document_to_pdf", { 'slug': document.slug}) }}" class="btn btn-primary">Télécharger en PDF</a>
-		</div> #}
 		<div class="text-center showButton">
 				<a href="{{ path("document_to_pdf", { 'slug': document.slug }) }}" class="btn btn-primary">Télécharger en PDF</a>
 			{% if is_granted("ROLE_USER") %}
 				<a href="{{ path("document_update", { 'slug': document.slug }) }}" class="btn btn-warning float-right">Modifier le document</a>
+				<form action="{{ path('document_delete', {'slug' : document.slug }) }}">
+					<p>
+						{% if app.user == document.author %}
+							<button class="btn btn-danger btn-sm float-right">Supprimer</button>
+						{% else %}
+							<button class="btn btn-danger btn-sm float-right" disabled>Supprimer</button>
+						{% endif %}
+					</p>
+				</form>
 			{% endif %}
 		</div>
 	</div>

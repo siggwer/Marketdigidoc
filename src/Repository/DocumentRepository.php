@@ -6,7 +6,10 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\ORMException;
 use App\Entity\Document;
 
 /**
@@ -24,8 +27,9 @@ class DocumentRepository extends ServiceEntityRepository
 
     /**
      * @param [integer] $id
-     * 
+     *
      * @return void
+     * @throws NonUniqueResultException
      */
     public function getDocument($id)
     {
@@ -36,6 +40,18 @@ class DocumentRepository extends ServiceEntityRepository
                     ->setParameter('author_id', $id)
                     ->getQuery()
                     ->getOneOrNullResult();
+    }
+
+    /**
+     * @param $document
+     *
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function delete($document)
+    {
+        $this->_em->remove($document);
+        $this->_em->flush();
     }
 
 // /**
