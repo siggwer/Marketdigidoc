@@ -7,6 +7,8 @@ namespace App\Voter;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use App\Entity\Document;
+use LogicException;
+use App\Entity\User;
 
 /**
  * Class DocumentVoter

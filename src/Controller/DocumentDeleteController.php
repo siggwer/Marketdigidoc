@@ -114,7 +114,7 @@ class DocumentDeleteController extends AbstractController
         $this->messageFlash->getFlashBag()->add('success', "Tâche supprimée.");
 
         return new RedirectResponse(
-            $this->urlGenerator->generate('task_list'),
+            $this->urlGenerator->generate('document_list'),
             RedirectResponse::HTTP_FOUND
         );
     }

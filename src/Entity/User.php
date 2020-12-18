@@ -109,8 +109,10 @@ class User implements UserInterface, Serializable
 
     /**
      * @var string|null
+     *
+     * @ORM\Column(type="array")
      */
-    private $role = 'ROLE_USER';
+    private $role = [];
 
     /**
      * User constructor.
@@ -306,7 +308,7 @@ class User implements UserInterface, Serializable
      */
     public function getRoles(): array
     {
-        return ['ROLE_USER'];
+        return $this->roles;
     }
 
     /**
